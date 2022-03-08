@@ -1,0 +1,32 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+<div class="row">
+    <div class="col-3">
+        <InputFile OnChange=PickFile multiple accept="image/png, image/jpeg" />
+    </div>
+    <div class="col-12">
+        <ul>
+            @foreach (IBrowserFile file in source)
+            {
+                <li>@file.Name</li>
+            }
+        </ul>
+        <button @onclick=Submit>Display Images</button>
+    </div>
+</div>
+<hr />
+<div class="row">
+    @foreach (FileModel file in pickedFiles)
+    {
+        <div class="col-3">
+            <img style="width:100px;height:100px;" src=@file.BytesUrl />
+        </div>
+    }
+</div>
